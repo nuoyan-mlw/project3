@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间+ id 名字来确定唯一的sql语句-->
+<mapper namespace="com.crazycode.mapper.RoleMapper">
+    <select id="queryRole" resultMap="role_type">
+         select r.id rid,r.rolename,r.roledesc from role r,users_role ur where ur.userid = #{id} and r.id = ur.roleid
+    </select>
+
+    <resultMap id="role_type" type="role">
+        <result property="id" column="rid"></result>
+        <result property="rolename" column="r.rolename"></result>
+        <result property="roledesc" column="r.roledesc"></result>
+        <collection property="permissions" javaType="list" ofType="permission"
+        select="com.crazycode.mapper.PermissionMapper.queryPermission" column="rid"></collection>
+    </resultMap>
+
+</mapper>

@@ -11,4 +11,16 @@
     <select id="queryUser" resultType="users">
         select id,email,username,password,phoneNum,status from users
     </select>
+
+    <!--<select id="queryUserMsg">
+        select u.username,r.rolename,r.roledesc,p.permissionname,p.url
+        from users u,users_role ur,role r,role_permission rp,permission p where u.id=#{?}
+        and u.id = ur.userid and ur.roleid = r.id and r.id = rp.role.id and rp.permissionid = p.id
+    </select>-->
+    
+    <select id="queryUserByID" resultType="users">
+       select id,email,username,password,phoneNum,status from users where id = #{id}
+    </select>
+
+
 </mapper>

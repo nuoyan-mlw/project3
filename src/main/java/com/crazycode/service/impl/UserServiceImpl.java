@@ -22,4 +22,10 @@ public class UserServiceImpl implements UserService {
     public List<Users> queryUser() throws Exception {
         return userMapper.queryUser();
     }
+
+    @Override
+    public Users queryUserByID(String id) throws Exception {
+        return userMapper.queryUserByID(id);
+    }
+
 }

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -158,18 +158,18 @@
                         </tr>
                         </thead>
                         <tr data-tt-id="0">
-                            <td colspan="2">${user.username}</td>
+                            <td colspan="2">用户名:${requestScope.user.username}</td>
                         </tr>
                         <tbody>
-                        <c:forEach items="${user.roles}" var="role" varStatus="vs">
-                            <tr data-tt-id="${vs.index+1}" data-tt-parent-id="0">
-                                <td>${role.roleName}</td>
-                                <td>${role.roleDesc}</td>
+                        <c:forEach items="${requestScope.role}" var="role" varStatus="vs">
+                            <tr data-tt-id="0" data-tt-parent-id="0">
+                                <td>角色名称:${role.roleName}</td>
+                                <td>角色描述:${role.roleDesc}</td>
                             </tr>
                             <c:forEach items="${role.permissions}" var="p">
                                 <tr data-tt-id="1-1" data-tt-parent-id="${vs.index+1}">
-                                    <td>${p.permissionName}</td>
-                                    <td>${p.url}</td>
+                                    <td>权限名称:${p.permissionName}</td>
+                                    <td>权限:${p.url}</td>
                                 </tr>
                             </c:forEach>
                         </c:forEach>

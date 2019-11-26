@@ -1,5 +1,8 @@
 package com.crazycode;
 
+import com.crazycode.mapper.PermissionMapper;
+import com.crazycode.mapper.RoleMapper;
+import com.crazycode.mapper.UserMapper;
 import com.crazycode.pojo.Users;
 import com.crazycode.service.LoginRegisterService;
 import com.crazycode.service.UserService;
@@ -14,6 +17,12 @@ class Project3ApplicationTests {
     private LoginRegisterService loginRegisterService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserMapper userMapper;
+    @Autowired
+    private RoleMapper roleMapper;
+    @Autowired
+    private PermissionMapper permissionMapper;
 
     @Test
     void contextLoads() {
@@ -37,5 +46,12 @@ class Project3ApplicationTests {
         users.setStatus(1L);
         int i = userService.addUser(users);
         System.out.println(i);
+    }
+
+    @Test
+    public void permissionQuery()throws Exception{
+        //System.out.println(userMapper.queryUserByID("ab07416d-a153-11e9-b4b3-74d02bd4fd82"));
+        System.out.println(roleMapper.queryRole("ab07416d-a153-11e9-b4b3-74d02bd4fd82"));
+       //System.out.println(permissionMapper.queryPermission("4b56a3e3-a152-11e9-b4b3-74d02bd4fd82"));
     }
 }

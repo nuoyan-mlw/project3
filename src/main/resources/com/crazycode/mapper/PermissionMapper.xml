@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间+ id 名字来确定唯一的sql语句-->
+<mapper namespace="com.crazycode.mapper.PermissionMapper">
+    <select id="queryPermission" resultMap="permission_type">
+         select p.id pid,p.permissionname,p.url from permission p,role_permission rp where p.id = rp.permissionid and rp.roleid=#{id}
+    </select>
+
+    <resultMap id="permission_type" type="permission">
+        <id property="id" column="pid"></id>
+        <result property="permissionname" column="p.permissionname"></result>
+        <result property="url" column="url"></result>
+    </resultMap>
+</mapper>

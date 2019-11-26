@@ -10,4 +10,7 @@ public interface UserService {
 
     //查询user
     public List<Users> queryUser()throws Exception;
+
+    //查询用户根据ID
+    public Users queryUserByID(String id)throws Exception;
 }
