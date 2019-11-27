@@ -66,11 +66,11 @@
 				<ul class="treeview-menu">
 
 					<li id="system-setting"><a
-						href="${pageContext.request.contextPath}/pages/product-list1.jsp">
+						href="${pageContext.request.contextPath}/product/queryProduct.do">
 							<i class="fa fa-circle-o"></i> 产品管理
 					</a></li>
 					<li id="system-setting"><a
-						href="${pageContext.request.contextPath}/pages/orders-page-list.jsp"> <i
+						href="${pageContext.request.contextPath}/order/queryOrder.do"> <i
 							class="fa fa-circle-o"></i> 订单管理
 					</a></li>
 

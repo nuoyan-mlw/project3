@@ -206,7 +206,34 @@
                             </tr>
                             </thead>
                             <tbody>
-                           
+                            <c:forEach items="${requestScope.products}" var="p">
+                                <tr>
+                                    <td><input name="ids" type="checkbox"></td>
+                                    <td>${p.id}</td>
+                                    <td>${p.productNum}</td>
+                                    <td>${p.productName}</td>
+                                    <td>${p.cityName}</td>
+                                    <td>${p.departureTime}</td>
+                                    <td class="text-center">${p.productPrice}</td>
+                                    <td class="text-center">${p.productDesc}</td>
+                                    <td class="text-center">
+                                        <c:choose>
+                                            <c:when test="${p.productStatus==1}">开启</c:when>
+                                            <c:otherwise>关闭</c:otherwise>
+                                        </c:choose>
+                                    <td class="text-center">
+                                        <button type="button" class="btn bg-olive btn-xs">订单</button>
+                                        <button type="button" class="btn bg-olive btn-xs">详情</button>
+                                        <button type="button" class="btn bg-olive btn-xs">编辑</button>
+                                    </td>
+                                </tr>
+
+                            </c:forEach>
+
+
+
+
+                           <%--
                             <tr>
                                 <td><input name="ids" type="checkbox"></td>
                                 <td>2</td>
@@ -223,7 +250,7 @@
                                     <button type="button" class="btn bg-olive btn-xs">详情</button>
                                     <button type="button" class="btn bg-olive btn-xs">编辑</button>
                                 </td>
-                            </tr>
+                            </tr>--%>
                            
 
                             </tbody>

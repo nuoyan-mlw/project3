@@ -24,3 +24,6 @@ mybatis:
   type-aliases-package: com.crazycode.pojo
   mapper-locations: classpath:com/crazycode/mapper/*.xml
 
+pagehelper:
+  reasonable: true
+  auto-dialect: mysql

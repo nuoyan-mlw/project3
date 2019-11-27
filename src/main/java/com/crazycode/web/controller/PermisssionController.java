@@ -49,7 +49,6 @@ public class PermisssionController {
     @GetMapping("/permission/deletePermission/{id}")
     public String deletePermission(@PathVariable("id") String pId)throws Exception{
         int i = permissionService.deletePermission(pId);
-
         return "redirect:/permission/queryPermission.do";
     }
 }

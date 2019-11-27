@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间+ id 名字来确定唯一的sql语句-->
+<mapper namespace="com.crazycode.mapper.OrderMapper">
+    <select id="queryAllOrder" resultType="orders">
+        select id,orderNum,orderTime,peopleCount,orderDesc,payType,orderStatus,productId,memberId from orders
+    </select>
+
+
+</mapper>

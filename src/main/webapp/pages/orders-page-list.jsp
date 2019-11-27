@@ -240,16 +240,16 @@
 								<tbody>
 
 
-									<c:forEach items="${pageInfo.list}" var="orders">
+									<c:forEach items="${requestScope.orders}" var="orders">
 
 										<tr>
 											<td><input name="ids" type="checkbox"></td>
 											<td>${orders.id }</td>
 											<td>${orders.orderNum }</td>
-											<td>${orders.product.productName }</td>
-											<td>${orders.product.productPrice }</td>
-											<td>${orders.orderTimeStr }</td>
-											<td class="text-center">${orders.orderStatusStr }</td>
+											<td>1111111</td>
+											<td>111111</td>
+											<td>${orders.orderTime }</td>
+											<td class="text-center">${orders.orderStatus }</td>
 											<td class="text-center">
 												<button type="button" class="btn bg-olive btn-xs">订单</button>
 												<button type="button" class="btn bg-olive btn-xs" onclick="location.href='${pageContext.request.contextPath}/orders/findById.do?id=${orders.id}'">详情</button>
