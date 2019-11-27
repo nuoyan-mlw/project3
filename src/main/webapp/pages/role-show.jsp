@@ -137,12 +137,12 @@
                                 </tr>
                                 </thead>
                                 <tr data-tt-id="0">
-                                    <td colspan="2">${role.roleName}</td>
+                                    <td colspan="2">${requestScope.role.roleName}:${requestScope.role.roleDesc}</td>
                                 </tr>
 
                                 <tbody>
                                 <c:forEach items="${role.permissions}" var="permission" varStatus="vs1">
-                                    <tr data-tt-id="${vs1.index+1}" data-tt-parent-id="0">
+                                    <tr data-tt-id="0" data-tt-parent-id="0">
                                         <td>${permission.permissionName }</td>
                                         <td>${permission.url }</td>
                                     </tr>

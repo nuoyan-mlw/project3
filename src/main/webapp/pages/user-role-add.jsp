@@ -96,7 +96,7 @@
 				<!-- 正文区域 -->
 				<section class="content"> 
 				
-				<input type="hidden" name="userId" value="${user.id}">
+				<input type="hidden" name="userId" value="">
 				
 					<table id="dataList"
 							class="table table-bordered table-striped table-hover dataTable">

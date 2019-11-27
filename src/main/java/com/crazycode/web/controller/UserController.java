@@ -44,12 +44,11 @@ public class UserController {
 
     @GetMapping("/user/info/{id}")//查询用户的详情
     public ModelAndView queryUserMsg(@PathVariable("id") String id)throws Exception{
-        System.out.println(id);
         ModelAndView mv = new ModelAndView("pages/user-show1");
         //查询用户信息
         Users user = userService.queryUserByID(id);
         //查询用户权利和职责
-        List<Role> role = roleService.queryRole(id);
+        List<Role> role = roleService.queryRolePermission(id);
         mv.addObject("user",user);
         mv.addObject("role",role);
         System.out.println(user);

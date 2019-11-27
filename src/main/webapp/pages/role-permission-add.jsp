@@ -91,12 +91,12 @@
 			<!-- 内容头部 /-->
 
 			<form
-				action="${pageContext.request.contextPath}/role/addPermissionToRole.do"
+				action="${pageContext.request.contextPath}/role/addRolePermission.do"
 				method="post">
 				<!-- 正文区域 -->
 				<section class="content"> 
 				
-				<input type="hidden" name="roleId" value="${role.id}">
+				<input type="hidden" name="roleId" value="${requestScope.roleId}">
 				
 					<table id="dataList"
 							class="table table-bordered table-striped table-hover dataTable">
@@ -111,7 +111,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${permissionList}" var="permission">
+								<c:forEach items="${requestScope.permission}" var="permission">
 									<tr>
 										<td>
 										

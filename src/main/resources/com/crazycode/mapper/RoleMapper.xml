@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--命名空间+ id 名字来确定唯一的sql语句-->
 <mapper namespace="com.crazycode.mapper.RoleMapper">
-    <select id="queryRole" resultMap="role_type">
+    <select id="queryRolePermission" resultMap="role_type">
          select r.id rid,r.rolename,r.roledesc from role r,users_role ur where ur.userid = #{id} and r.id = ur.roleid
     </select>
 
@@ -13,7 +13,34 @@
         <result property="rolename" column="r.rolename"></result>
         <result property="roledesc" column="r.roledesc"></result>
         <collection property="permissions" javaType="list" ofType="permission"
-        select="com.crazycode.mapper.PermissionMapper.queryPermission" column="rid"></collection>
+        select="com.crazycode.mapper.PermissionMapper.queryPermissionById" column="rid"></collection>
     </resultMap>
+
+    <select id="queryOneRolePermission" resultMap="role_type2">
+         select id,rolename,roledesc from role where id = #{id}
+    </select>
+
+    <resultMap id="role_type2" type="role">
+        <result property="id" column="id"></result>
+        <result property="roleName" column="rolename"></result>
+        <result property="roleDesc" column="roledesc"></result>
+        <collection property="permissions" javaType="list" ofType="permission"
+                    select="com.crazycode.mapper.PermissionMapper.queryPermissionById" column="id"></collection>
+    </resultMap>
+
+
+
+    <select id="queryRole" resultType="role">
+         select id,rolename,roledesc from role
+    </select>
+
+    <insert id="addRole">
+        insert into role values (UUID(),#{roleName},#{roleDesc})
+    </insert>
+
+    <!--删除角色-->
+    <delete id="deleteRole">
+        delete from role where id = #{id}
+    </delete>
 
 </mapper>

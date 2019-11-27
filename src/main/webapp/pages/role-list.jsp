@@ -140,19 +140,32 @@
 									</tr>
 								</thead>
 								<tbody>
-
-									
+									<c:forEach items="${requestScope.role}" var="role">
 										<tr>
+											<td><input name="ids" type="checkbox"></td>
+											<td>${role.id}</td>
+											<td>${role.roleName}</td>
+											<td>${role.roleDesc}</td>
+											<td class="text-center">
+												<a href="${pageContext.request.contextPath}/role/queryRolePermissionById.do/${role.id}" class="btn bg-olive btn-xs">详情</a>
+												<a href="${pageContext.request.contextPath}/role/deleteRole.do/${role.id}" class="btn bg-olive btn-xs">删除角色</a>
+												<a href="${pageContext.request.contextPath}/role/showRolePermission.do/${role.id}" class="btn bg-olive btn-xs">添加权限</a>
+											</td>
+										</tr>
+									</c:forEach>
+
+
+										<%--<tr>
 											<td><input name="ids" type="checkbox"></td>
 											<td>1</td>
 											<td>admin</td>
-											<td>管理员</td>																				
+											<td>管理员</td>
 											<td class="text-center">
 												<a href="${pageContext.request.contextPath}/role/findById.do?id=${role.id}" class="btn bg-olive btn-xs">详情</a>
 												<a href="${pageContext.request.contextPath}/role/deleteRole.do?id=${role.id}" class="btn bg-olive btn-xs">删除角色</a>
 												<a href="${pageContext.request.contextPath}/role/findRoleByIdAndAllPermission.do?id=${role.id}" class="btn bg-olive btn-xs">添加权限</a>
 											</td>
-										</tr>
+										</tr>--%>
 									
 								</tbody>
 								<!--

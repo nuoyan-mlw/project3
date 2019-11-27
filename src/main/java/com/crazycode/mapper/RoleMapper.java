@@ -9,5 +9,17 @@ import java.util.List;
 public interface RoleMapper {
 
     //查询role
-    public List<Role> queryRole(String id)throws Exception;
+    public List<Role> queryRolePermission(String id)throws Exception;
+
+    //查询单个role的权利
+    public Role queryOneRolePermission(String id)throws Exception;
+
+    //查询所有的role
+    public List<Role> queryRole()throws Exception;
+
+    //添加role
+    public int addRole(Role role)throws Exception;
+
+    //删除角色
+    public int deleteRole(String rid)throws Exception;
 }

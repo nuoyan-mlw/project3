@@ -5,6 +5,7 @@ import com.crazycode.mapper.RoleMapper;
 import com.crazycode.mapper.UserMapper;
 import com.crazycode.pojo.Users;
 import com.crazycode.service.LoginRegisterService;
+import com.crazycode.service.RoleService;
 import com.crazycode.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ class Project3ApplicationTests {
     private RoleMapper roleMapper;
     @Autowired
     private PermissionMapper permissionMapper;
+    @Autowired
+    private RoleService roleService;
 
     @Test
     void contextLoads() {
@@ -51,7 +54,12 @@ class Project3ApplicationTests {
     @Test
     public void permissionQuery()throws Exception{
         //System.out.println(userMapper.queryUserByID("ab07416d-a153-11e9-b4b3-74d02bd4fd82"));
-        System.out.println(roleMapper.queryRole("ab07416d-a153-11e9-b4b3-74d02bd4fd82"));
-       //System.out.println(permissionMapper.queryPermission("4b56a3e3-a152-11e9-b4b3-74d02bd4fd82"));
+        System.out.println(roleMapper.queryRolePermission("ab07416d-a153-11e9-b4b3-74d02bd4fd82"));
+       //System.out.println(permissionMapper.queryPermissionById("4b56a3e3-a152-11e9-b4b3-74d02bd4fd82"));
+    }
+
+    @Test
+    public void queryRole()throws Exception{
+        System.out.println(roleService.queryRole());
     }
 }
