@@ -5,6 +5,7 @@ import com.crazycode.pojo.Permission;
 import com.crazycode.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class PermissionMapperServiceImpl implements PermissionService {
     }
 
     @Override
+    @Transactional
     public void addRolePermission(String [] pId,String rId)throws Exception {
         for (int i = 0;i < pId.length;i++){
             permissionMapper.addRolePermission(pId[i],rId);
@@ -31,6 +33,7 @@ public class PermissionMapperServiceImpl implements PermissionService {
     }
 
     @Override
+    @Transactional
     public int addPermission(Permission permission) throws Exception {
         return permissionMapper.addPermission(permission);
     }
@@ -41,6 +44,7 @@ public class PermissionMapperServiceImpl implements PermissionService {
     }
 
     @Override
+    @Transactional
     public int deletePermission(String pId) throws Exception {
         return permissionMapper.deletePermission(pId);
     }

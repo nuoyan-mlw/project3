@@ -6,6 +6,7 @@ import com.crazycode.pojo.Role;
 import com.crazycode.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Service
@@ -32,11 +33,13 @@ public class RoleMapperServiceImpl implements RoleService {
     }
 
     @Override
+    @Transactional
     public int addRole(Role role) throws Exception {
         return roleMapper.addRole(role);
     }
 
     @Override
+    @Transactional
     public void deleteRoleAndPermission(String rId) throws Exception {
        //删除角色
         roleMapper.deleteRole(rId);
