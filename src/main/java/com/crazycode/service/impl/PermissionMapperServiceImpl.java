@@ -29,4 +29,19 @@ public class PermissionMapperServiceImpl implements PermissionService {
             permissionMapper.addRolePermission(pId[i],rId);
         }
     }
+
+    @Override
+    public int addPermission(Permission permission) throws Exception {
+        return permissionMapper.addPermission(permission);
+    }
+
+    @Override
+    public Permission queryPermission(String pId) throws Exception {
+        return permissionMapper.queryPermission(pId);
+    }
+
+    @Override
+    public int deletePermission(String pId) throws Exception {
+        return permissionMapper.deletePermission(pId);
+    }
 }

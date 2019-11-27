@@ -15,7 +15,7 @@ import java.lang.management.MonitorInfo;
 import java.util.List;
 
 @Controller
-public class RoleAndPermissionController {
+public class RoleController {
 
     @Autowired
     private RoleService roleService;

@@ -51,8 +51,6 @@ public class UserController {
         List<Role> role = roleService.queryRolePermission(id);
         mv.addObject("user",user);
         mv.addObject("role",role);
-        System.out.println(user);
-        System.out.println(role);
         return mv;
     }
 

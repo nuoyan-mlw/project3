@@ -140,9 +140,22 @@
 									</tr>
 								</thead>
 								<tbody>
+									<c:forEach items="${requestScope.permission}" var="permission">
+										<tr>
+											<td><input name="ids" type="checkbox"></td>
+											<td>${permission.id}</td>
+											<td>${permission.permissionName}</td>
+											<td>${permission.url}</td>
+											<td class="text-center">
+												<a href="${pageContext.request.contextPath}/permission/queryPermission/${permission.id}" class="btn bg-olive btn-xs">详情</a>
+												<a href="${pageContext.request.contextPath}/permission/deletePermission/${permission.id}" class="btn bg-olive btn-xs">删除权限</a>
+											</td>
+										</tr>
+
+									</c:forEach>
 
 									
-										<tr>
+										<%--<tr>
 											<td><input name="ids" type="checkbox"></td>
 											<td>1</td>
 											<td>admin</td>
@@ -151,7 +164,7 @@
 												<a href="${pageContext.request.contextPath}/permission/findById.do?id=${p.id}" class="btn bg-olive btn-xs">详情</a>
 												<a href="${pageContext.request.contextPath}/permission/deletePermission.do?id=${p.id}" class="btn bg-olive btn-xs">删除权限</a>
 											</td>
-										</tr>
+										</tr>--%>
 									
 								</tbody>
 								<!--

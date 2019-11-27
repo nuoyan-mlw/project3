@@ -46,7 +46,7 @@
 							class="fa fa-circle-o"></i> 角色管理
 					</a></li>
 					<li id="system-setting"><a
-						href="${pageContext.request.contextPath}/pages/permission-list.jsp">
+						href="${pageContext.request.contextPath}/permission/queryPermission.do">
 							<i class="fa fa-circle-o"></i> 资源权限管理
 					</a></li>
 					<li id="system-setting">

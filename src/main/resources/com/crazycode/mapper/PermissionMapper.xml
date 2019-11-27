@@ -14,6 +14,7 @@
         <result property="url" column="url"></result>
     </resultMap>
 
+    <!--查询所有的权限-->
     <select id="queryAllPermission" resultType="permission">
          select id,permissionname,url from permission
     </select>
@@ -25,5 +26,20 @@
     <!--删除角色权限-->
     <delete id="deleteRolePermission">
         delete from role_permission where roleid = #{id}
+    </delete>
+
+    <!--添加权限种类-->
+    <insert id="addPermission">
+        insert into permission values (UUID(),#{permissionName},#{url})
+    </insert>
+
+    <!--查询权限详情-->
+    <select id="queryPermission" resultType="permission">
+        select id,permissionname,url from permission where id = #{id}
+    </select>
+
+    <!--删除权限-->
+    <delete id="deletePermission">
+        delete from permission where id = #{id}
     </delete>
 </mapper>
