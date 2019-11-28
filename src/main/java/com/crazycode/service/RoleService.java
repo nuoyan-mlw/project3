@@ -20,4 +20,7 @@ public interface RoleService {
 
     //删除角色以及角色的权限
     public void deleteRoleAndPermission(String rId)throws Exception;
+
+    //给用户添加角色
+    public void addUserRole(String [] rId,String uId)throws Exception;
 }

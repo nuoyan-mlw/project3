@@ -91,12 +91,12 @@
 			<!-- 内容头部 /-->
 
 			<form
-				action="${pageContext.request.contextPath}/user/addRoleToUser.do"
+				action="${pageContext.request.contextPath}/role/addUserRole.do"
 				method="post">
 				<!-- 正文区域 -->
 				<section class="content"> 
 				
-				<input type="hidden" name="userId" value="">
+				<input type="hidden" name="userId" value="${requestScope.userId}">
 				
 					<table id="dataList"
 							class="table table-bordered table-striped table-hover dataTable">
@@ -111,8 +111,21 @@
 								</tr>
 							</thead>
 							<tbody>
-							
+								<c:forEach items="${requestScope.roles}" var="r">
 									<tr>
+										<td>
+
+										<input name="ids" type="checkbox" value="${r.id}">
+
+										</td>
+										<td>${r.id}</td>
+										<td>${r.roleName}</td>
+										<td>${r.roleDesc}</td>
+
+									</tr>
+								</c:forEach>
+							
+									<%--<tr>
 										<td>
 										
 										<input name="ids" type="checkbox" value="1">
@@ -122,7 +135,7 @@
 										<td>admin</td>
 										<td>管理员</td>
 										
-									</tr>
+									</tr>--%>
 								
 							</tbody>
 

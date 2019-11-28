@@ -18,6 +18,9 @@ spring:
     view:
       prefix: /
       suffix: .jsp
+  aop:
+    auto: true
+    proxy-target-class: true
 
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml

@@ -51,7 +51,7 @@
 					</a></li>
 					<li id="system-setting">
 						<a
-						href="${pageContext.request.contextPath}/log/queryLog"> <i
+						href="${pageContext.request.contextPath}/log/queryLog.do/1/8"> <i
 							class="fa fa-circle-o"></i> 访问日志
 					</a>
 					</li>

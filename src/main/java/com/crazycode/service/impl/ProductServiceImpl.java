@@ -17,4 +17,14 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> queryProduct() throws Exception {
         return productMapper.queryProduct();
     }
+
+    @Override
+    public Product queryProductById(String pId) throws Exception {
+        return productMapper.queryProductById(pId);
+    }
+
+    @Override
+    public int addProduct(Product product) throws Exception {
+        return productMapper.addProduct(product);
+    }
 }

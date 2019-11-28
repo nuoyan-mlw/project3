@@ -1,6 +1,7 @@
 package com.crazycode.mapper;
 
 import com.crazycode.pojo.Role;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -22,4 +23,7 @@ public interface RoleMapper {
 
     //删除角色
     public int deleteRole(String rid)throws Exception;
+
+    //给用户添加角色
+    public void addUserRole(@Param("userId")String rId,@Param("roleId") String uId)throws Exception;
 }

@@ -8,5 +8,13 @@
         select id,productNum,productName,cityName,departureTime,productPrice,productDesc,productStatus from product
     </select>
 
+    <select id="queryProductById" resultType="product">
+        select id,productNum,productName,cityName,departureTime,productPrice,productDesc,productStatus from product where id = #{id}
+    </select>
+
+    <!--添加产品-->
+    <insert id="addProduct">
+        insert into product values (UUID(),#{productNum},#{productName},#{cityName},#{departureTime},#{productPrice},#{productDesc},#{productStatus})
+    </insert>
 
 </mapper>

@@ -43,4 +43,9 @@
         delete from role where id = #{id}
     </delete>
 
+    <!--给用户添加角色-->
+    <insert id="addUserRole">
+        insert into users_role values (#{roleId},#{userId})
+    </insert>
+
 </mapper>

@@ -193,7 +193,7 @@
 								<div class="form-group form-inline">
 									<div class="btn-group">
 										<button type="button" class="btn btn-default" title="新建"
-											onclick="location.href='${pageContext.request.contextPath}/pages/product-add.jsp'">
+											onclick="location.href='${pageContext.request.contextPath}/pages'">
 											<i class="fa fa-file-o"></i> 新建
 										</button>
 										<button type="button" class="btn btn-default" title="删除">
@@ -246,8 +246,8 @@
 											<td><input name="ids" type="checkbox"></td>
 											<td>${orders.id }</td>
 											<td>${orders.orderNum }</td>
-											<td>1111111</td>
-											<td>111111</td>
+											<td>${orders.product.productName}</td>
+											<td>${orders.product.productPrice}</td>
 											<td>${orders.orderTime }</td>
 											<td class="text-center">${orders.orderStatus }</td>
 											<td class="text-center">
@@ -272,7 +272,7 @@
 							<!--数据列表/-->
 
 							<!--工具栏-->
-							<div class="pull-left">
+							<%--<div class="pull-left">
 								<div class="form-group form-inline">
 									<div class="btn-group">
 										<button type="button" class="btn btn-default" title="新建">
@@ -299,7 +299,7 @@
 										placeholder="搜索"> <span
 										class="glyphicon glyphicon-search form-control-feedback"></span>
 								</div>
-							</div>
+							</div>--%>
 							<!--工具栏/-->
 
 						</div>

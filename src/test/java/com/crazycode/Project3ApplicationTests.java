@@ -5,6 +5,7 @@ import com.crazycode.mapper.RoleMapper;
 import com.crazycode.mapper.UserMapper;
 import com.crazycode.pojo.Users;
 import com.crazycode.service.LoginRegisterService;
+import com.crazycode.service.ProductService;
 import com.crazycode.service.RoleService;
 import com.crazycode.service.UserService;
 import org.junit.jupiter.api.Test;
@@ -26,6 +27,8 @@ class Project3ApplicationTests {
     private PermissionMapper permissionMapper;
     @Autowired
     private RoleService roleService;
+    @Autowired
+    private ProductService productService;
 
     @Test
     void contextLoads() {
@@ -60,6 +63,7 @@ class Project3ApplicationTests {
 
     @Test
     public void queryRole()throws Exception{
-        System.out.println(roleService.queryRole());
+        /*System.out.println(roleService.queryRole());*/
+        System.out.println(productService.queryProductById("0574b9ab9d7611e9aa6e74d02bd4fd82"));
     }
 }

@@ -2,6 +2,8 @@ package com.crazycode.pojo;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class Product {
 
@@ -9,8 +11,11 @@ public class Product {
   private String productNum;
   private String productName;
   private String cityName;
-  private java.sql.Timestamp departureTime;
+  private Date departureTime;
   private double productPrice;
   private String productDesc;
   private long productStatus;
+
+
+
 }

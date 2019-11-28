@@ -54,4 +54,21 @@ public class UserController {
         return mv;
     }
 
+    //查询角色
+    @GetMapping("/user/adduser/{id}")
+    public ModelAndView queryRole(@PathVariable("id") String uid)throws Exception{
+        ModelAndView mv = new ModelAndView("pages/user-role-add");
+        List<Role> roles = roleService.queryRole();
+        mv.addObject("userId",uid);
+        mv.addObject("roles",roles);
+        return mv;
+    }
+
+    //给用户添加角色
+    @PostMapping("/role/addUserRole.do")
+    public String addRolePermission(String [] ids,String userId)throws Exception{
+        roleService.addUserRole(ids,userId);
+        return "redirect:/user/info/"+userId;
+    }
+
 }

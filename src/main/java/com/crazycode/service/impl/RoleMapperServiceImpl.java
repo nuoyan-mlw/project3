@@ -46,4 +46,11 @@ public class RoleMapperServiceImpl implements RoleService {
         //删除权限
         permissionMapper.deleteRolePermission(rId);
     }
+
+    @Override
+    public void addUserRole(String[] rId, String uId) throws Exception {
+        for (int i = 0;i < rId.length;i++){
+            roleMapper.addUserRole(rId[i],uId);
+        }
+    }
 }

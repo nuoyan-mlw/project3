@@ -59,6 +59,14 @@
 	href="${pageContext.request.contextPath}/plugins/bootstrap-slider/slider.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.css">
+<script>
+	function go(pageNo, pageSize) {
+		window.location = "${pageContext.request.contextPath}/log/queryLog.do/" + pageNo + "/" + pageSize;
+		return false;
+	}
+</script>
+
+
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -141,11 +149,11 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${requestScope.logList}" var="syslog">
+								<c:forEach items="${requestScope.data.list}" var="syslog">
 									<tr>
 										<td><input name="ids" type="checkbox"></td>
 										<td>${syslog.id}</td>
-										<td>${syslog.visitTime }</td>
+										<td>${syslog.visitTime}</td>
 										<td>${syslog.username }</td>
 										<td>${syslog.ip }</td>
 										<td>${syslog.url}</td>
@@ -189,7 +197,8 @@
 				<div class="box-footer">
 					<div class="pull-left">
 						<div class="form-group form-inline">
-							总共2 页，共14 条数据。 每页 <select class="form-control">
+							总共2页，共14 条数据。 每页
+							<select class="form-control">
 								<option>10</option>
 								<option>15</option>
 								<option>20</option>
@@ -201,15 +210,13 @@
 
 					<div class="box-tools pull-right">
 						<ul class="pagination">
-							<li><a href="#" aria-label="Previous">首页</a></li>
-							<li><a href="#">上一页</a></li>
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">下一页</a></li>
-							<li><a href="#" aria-label="Next">尾页</a></li>
+							<li><a href="javascript:go('1','${requestScope.data.pageSize}')" aria-label="Previous">首页</a></li>
+							<li><a href="javascript:go('${requestScope.data.prePage}','${requestScope.data.pageSize}')">上一页</a></li>
+							<li><a href="#">${requestScope.data.pageNum}</a></li>
+							<li><a href="#">/</a></li>
+							<li><a href="#">${requestScope.data.pages}</a></li>
+							<li><a href="javascript:go('${requestScope.data.nextPage}','${requestScope.data.pageSize}')">下一页</a></li>
+							<li><a href="javascript:go('${requestScope.data.pages}','${requestScope.data.pageSize}')" aria-label="Next">尾页</a></li>
 						</ul>
 					</div>
 

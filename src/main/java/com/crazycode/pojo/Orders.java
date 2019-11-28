@@ -14,4 +14,6 @@ public class Orders {
   private long orderStatus;
   private String productId;
   private String memberId;
+
+  private Product product;
 }

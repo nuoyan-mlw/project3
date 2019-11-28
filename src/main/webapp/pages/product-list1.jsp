@@ -208,7 +208,7 @@
                             <tbody>
                             <c:forEach items="${requestScope.products}" var="p">
                                 <tr>
-                                    <td><input name="ids" type="checkbox"></td>
+                                    <td><input name="ids" type="checkbox" id="ids" value="${p.id}"></td>
                                     <td>${p.id}</td>
                                     <td>${p.productNum}</td>
                                     <td>${p.productName}</td>
@@ -268,7 +268,7 @@
                         <!--数据列表/-->
 
                         <!--工具栏-->
-                        <div class="pull-left">
+                        <%--<div class="pull-left">
                             <div class="form-group form-inline">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default" title="新建"><i
@@ -294,7 +294,7 @@
                                 <input type="text" class="form-control input-sm" placeholder="搜索">
                                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
                             </div>
-                        </div>
+                        </div>--%>
                         <!--工具栏/-->
 
                     </div>

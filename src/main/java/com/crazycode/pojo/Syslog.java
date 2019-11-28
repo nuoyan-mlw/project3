@@ -2,14 +2,19 @@ package com.crazycode.pojo;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class Syslog {
 
   private String id;
-  private java.sql.Timestamp visitTime;
+  private Date visitTime;
   private String username;
   private String ip;
   private String url;
-  private long executionTime;
+  private Long executionTime;
   private String method;
+
+  private Long StartTime;
+  private Long EndTime;
 }
