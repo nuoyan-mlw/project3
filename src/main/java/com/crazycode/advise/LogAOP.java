@@ -75,8 +75,8 @@ public class LogAOP {
             // 接收到请求，记录请求内容
             ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
             HttpServletRequest request = attributes.getRequest();
-//            HttpSession session = request.getSession(false);
-//            Users user = (Users)session.getAttribute("user");
+            // HttpSession session = request.getSession(false);
+            // Users user = (Users)session.getAttribute("user");
             //创建日志实体
             Syslog logger = new Syslog();
 

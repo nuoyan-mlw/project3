@@ -109,6 +109,36 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/bootstrap-slider/slider.css">
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.css">
+
+    <script>
+       var $form = ${"#form"};
+       var $delete = ${"#delete"};
+       var $open = ${"#open"};
+       var $close = ${"#close"};
+
+       $(function () {
+
+           $delete.click(function () {
+               $form.attr("action","${pageContext.request.contextPath}/");
+               $form.submit();
+           });
+
+           $open.click(function () {
+               $form.attr("action","${pageContext.request.contextPath}/");
+               $form.submit();
+           });
+
+           $close.click(function () {
+               $form.attr("action","${pageContext.request.contextPath}/");
+               $form.submit();
+           });
+
+
+       });
+
+
+    </script>
+
 </head>
 
 <body class="hold-transition skin-purple sidebar-mini">
@@ -164,13 +194,13 @@
                                     <button type="button" class="btn btn-default" title="新建" onclick="location.href='${pageContext.request.contextPath}/pages/product-add.jsp'"><i
                                             class="fa fa-file-o"></i> 新建
                                     </button>
-                                    <button type="button" class="btn btn-default" title="删除"><i
+                                    <button type="button" class="btn btn-default" title="删除" id="delete"><i
                                             class="fa fa-trash-o"></i> 删除
                                     </button>
-                                    <button type="button" class="btn btn-default" title="开启"><i class="fa fa-check"></i>
+                                    <button type="button" class="btn btn-default" title="开启" id="open"><i class="fa fa-check"></i>
                                         开启
                                     </button>
-                                    <button type="button" class="btn btn-default" title="屏蔽"><i class="fa fa-ban"></i>
+                                    <button type="button" class="btn btn-default" title="屏蔽" id="close"><i class="fa fa-ban"></i>
                                         屏蔽
                                     </button>
                                     <button type="button" class="btn btn-default" title="刷新"><i
@@ -187,6 +217,7 @@
                         </div>
                         <!--工具栏/-->
 
+                        <form id="form" action="#" method="post">
                         <!--数据列表-->
                         <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
                             <thead>
@@ -266,7 +297,7 @@
                         </tfoot>-->
                         </table>
                         <!--数据列表/-->
-
+                        </form>
                         <!--工具栏-->
                         <%--<div class="pull-left">
                             <div class="form-group form-inline">

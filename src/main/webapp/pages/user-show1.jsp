@@ -162,7 +162,7 @@
                         </tr>
                         <tbody>
                         <c:forEach items="${requestScope.role}" var="role" varStatus="vs">
-                            <tr data-tt-id="0" data-tt-parent-id="0">
+                            <tr data-tt-id="${vs.index+1}" data-tt-parent-id="0">
                                 <td>角色名称:${role.roleName}</td>
                                 <td>角色描述:${role.roleDesc}</td>
                             </tr>
