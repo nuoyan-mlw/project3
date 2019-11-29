@@ -17,4 +17,9 @@ public class LogServiceImpl implements LogService {
     public List<Syslog> queryLog() throws Exception {
         return logMapper.queryLog();
     }
+
+    @Override
+    public int addLog(Syslog syslog) throws Exception {
+        return logMapper.addLog(syslog);
+    }
 }

@@ -8,5 +8,9 @@
         select id,visitTime,username,ip,url,executionTime,method from syslog
     </select>
 
+    <!--添加日志-->
+    <insert id="addLog">
+        insert into syslog values (#{id},#{visitTime},#{username},#{ip},#{url},#{executionTime},#{method})
+    </insert>
 
 </mapper>

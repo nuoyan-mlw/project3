@@ -23,7 +23,7 @@ public class LoginRegisterController {
         ModelAndView mv = new ModelAndView();
         if(user != null){
             HttpSession session = req.getSession(true);
-            session.setAttribute("user","user");
+            session.setAttribute("user",user);
             mv.setViewName("pages/main");
         }else {
             mv.setViewName("login");

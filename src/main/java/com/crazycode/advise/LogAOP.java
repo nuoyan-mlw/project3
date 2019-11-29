@@ -4,20 +4,30 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.crazycode.Util.LoggerUtils;
 import com.crazycode.pojo.Syslog;
+import com.crazycode.pojo.Users;
+import com.crazycode.service.LogService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.mybatis.logging.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.logging.Logger;
 @Aspect
 @Component
 public class LogAOP {
+
+    @Autowired
+    private LogService logService;
+
     /**
      * @author Administrator
      */
@@ -51,7 +61,7 @@ public class LogAOP {
 //    使用@AfterThrowing用来处理当切入内容部分抛出异常之后的处理逻辑
 
 
-        @Pointcut("execution(* com.crazycode.web.controller..*.*(..))")
+        @Pointcut("execution(* com.crazycode.web.controller..*.*(..))&& !execution(* com.crazycode.web.controller..*.logout*(..))")
         public void webLog() {
         }
 
@@ -65,8 +75,13 @@ public class LogAOP {
             // 接收到请求，记录请求内容
             ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
             HttpServletRequest request = attributes.getRequest();
+//            HttpSession session = request.getSession(false);
+//            Users user = (Users)session.getAttribute("user");
             //创建日志实体
             Syslog logger = new Syslog();
+
+            /*logger.setId(user.getId());
+            logger.setUsername(user.getUsername());*/
             //请求开始时间
             logger.setStartTime(System.currentTimeMillis());
             logger.setVisitTime(new Date(System.currentTimeMillis()));
@@ -78,8 +93,8 @@ public class LogAOP {
             String paramData = JSON.toJSONString(request.getParameterMap(), SerializerFeature.DisableCircularReferenceDetect, SerializerFeature.WriteMapNullValue);
             //设置客户端ip
             logger.setIp(LoggerUtils.getCliectIp(request));
-            //设置请求类型（json|普通请求）
-            logger.setMethod(LoggerUtils.getRequestType(request));
+            /*//设置请求类型（json|普通请求）
+            logger.setMethod(LoggerUtils.getRequestType(request));*/
             //设置请求地址
             logger.setUrl(url);
             /*System.out.println(logger);*/
@@ -98,11 +113,11 @@ public class LogAOP {
          * @param
          */
         @AfterReturning("webLog()")
-        public void doAfterReturning() {
+        public void doAfterReturning(JoinPoint joinPoint) throws Exception {
 
 
             ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-//        HttpServletRequest request = attributes.getRequest();
+            HttpServletRequest request = attributes.getRequest();
             HttpServletResponse response = attributes.getResponse();
 
             //获取请求错误码
@@ -113,6 +128,41 @@ public class LogAOP {
             loggerEntity.setEndTime(System.currentTimeMillis());
             //设置请求时间差
             loggerEntity.setExecutionTime(loggerEntity.getEndTime() - loggerEntity.getStartTime());
+
+
+
+            //从切面织入点处通过反射机制获取织入点处的方法
+            MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+            //获取切入点所在的方法
+            Method method = signature.getMethod();
+            //获取请求的方法名
+            String methodName = method.getName();
+            loggerEntity.setMethod(methodName);
+
+
+
+           /* String method = joinPoint.getTarget().getClass().getName();
+            loggerEntity.setMethod(method);*/
+
+            HttpSession session = request.getSession(false);
+
+            Users user = null;
+            try {
+                user = (Users)session.getAttribute("user");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+            if(user != null){
+                loggerEntity.setId(user.getId());
+                loggerEntity.setUsername(user.getUsername());
+            }
+
+            if (user.getId() != null){
+                logService.addLog(loggerEntity);
+            }
+
             System.out.println(loggerEntity);
 
         }
