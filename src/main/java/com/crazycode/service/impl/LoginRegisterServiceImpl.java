@@ -1,5 +1,6 @@
 package com.crazycode.service.impl;
 
+import com.crazycode.Util.MD5Util;
 import com.crazycode.mapper.LoginRegisterMapper;
 import com.crazycode.pojo.Users;
 import com.crazycode.service.LoginRegisterService;
@@ -15,7 +16,15 @@ public class LoginRegisterServiceImpl implements LoginRegisterService {
 
     @Override
     @Transactional
-    public Users login(Users users) throws Exception {
-        return loginRegisterMapper.login(users);
+    public Users login(String username) throws Exception {
+        return loginRegisterMapper.login(username);
+    }
+
+    @Override
+    public int save(Users user) throws Exception {
+        //对初始密码进行加密
+        user.setPassword(MD5Util.md5hash(user.getPassword(),user.getUsername()));
+        System.out.println(user.getPassword());
+        return loginRegisterMapper.save(user);
     }
 }

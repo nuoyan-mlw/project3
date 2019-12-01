@@ -32,6 +32,7 @@
 		<!-- /.login-logo -->
 		<div class="login-box-body">
 			<p class="login-box-msg">登录系统</p>
+			<div>${info}</div>
 
 			<form action="${pageContext.request.contextPath}/login.do" method="post">
 				<div class="form-group has-feedback">
@@ -59,7 +60,7 @@
 			</form>
 
 			<a href="#">忘记密码</a><br>
-
+			<a href="register.jsp">注册</a>
 
 		</div>
 		<!-- /.login-box-body -->

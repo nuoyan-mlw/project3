@@ -6,5 +6,8 @@ import org.springframework.stereotype.Component;
 @Component
 public interface LoginRegisterMapper {
     //登陆用户
-    public Users login(Users users)throws Exception;
+    public Users login(String username)throws Exception;
+
+    //注册
+    public int save(Users user) throws Exception;
 }

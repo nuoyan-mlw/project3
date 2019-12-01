@@ -9,7 +9,6 @@ jdbc:
     initialPoolSize: 10
 
 
-
 spring:
   mvc:
     hiddenmethod:
@@ -21,6 +20,9 @@ spring:
   aop:
     auto: true
     proxy-target-class: true
+  redis:
+    port: 8888
+
 
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
@@ -30,3 +32,9 @@ mybatis:
 pagehelper:
   reasonable: true
   auto-dialect: mysql
+
+
+shiro:
+  loginUrl: /login.jsp
+  successUrl: /pages/main.jsp
+  unauthorizedUrl: /

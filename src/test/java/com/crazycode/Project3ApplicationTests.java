@@ -39,7 +39,7 @@ class Project3ApplicationTests {
         Users users = new Users();
         users.setUsername("chenhao");
         users.setPassword("123456");
-        System.out.println(loginRegisterService.login(users));
+        //System.out.println(loginRegisterService.login(users));
     }
 
     @Test

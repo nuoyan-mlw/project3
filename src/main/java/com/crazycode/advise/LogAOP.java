@@ -6,6 +6,7 @@ import com.crazycode.Util.LoggerUtils;
 import com.crazycode.pojo.Syslog;
 import com.crazycode.pojo.Users;
 import com.crazycode.service.LogService;
+import org.apache.shiro.SecurityUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -61,7 +62,8 @@ public class LogAOP {
 //    使用@AfterThrowing用来处理当切入内容部分抛出异常之后的处理逻辑
 
 
-        @Pointcut("execution(* com.crazycode.web.controller..*.*(..))&& !execution(* com.crazycode.web.controller..*.logout*(..))")
+        @Pointcut("execution(* com.crazycode.web.controller..*.*(..))&& !execution(* com.crazycode.web.controller..*.logout*(..))" +
+                "&& !execution(* com.crazycode.web.controller..*.login*(..))")
         public void webLog() {
         }
 
@@ -144,26 +146,34 @@ public class LogAOP {
            /* String method = joinPoint.getTarget().getClass().getName();
             loggerEntity.setMethod(method);*/
 
-            HttpSession session = request.getSession(false);
+            Users users = null;
+            try {
+                users = (Users) SecurityUtils.getSubject().getPrincipal();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            //System.out.println(users);
 
-            Users user = null;
+            /*HttpSession session = request.getSession(false);*/
+
+            /*Users user = null;
             try {
                 user = (Users)session.getAttribute("user");
             } catch (Exception e) {
                 e.printStackTrace();
+            }*/
+
+
+            if(users != null){
+                loggerEntity.setId(users.getId());
+                loggerEntity.setUsername(users.getUsername());
             }
 
-
-            if(user != null){
-                loggerEntity.setId(user.getId());
-                loggerEntity.setUsername(user.getUsername());
-            }
-
-            if (user.getId() != null){
+            if (users.getId() != null){
                 logService.addLog(loggerEntity);
             }
 
-            System.out.println(loggerEntity);
+            //System.out.println(loggerEntity);
 
         }
 
@@ -181,7 +191,7 @@ public class LogAOP {
         public void doAfterThrowingAdvice(JoinPoint joinPoint, Throwable exception) {
             //目标方法名：
             Syslog loggerEntity = loggerEntityThreadLocal.get();
-            loggerEntity.setMethod(exception.getMessage());
+            /*loggerEntity.setMethod(exception.getMessage());*/
             /*System.out.println(loggerEntity);*/
 
 //         if(exception instanceof NullPointerException){
