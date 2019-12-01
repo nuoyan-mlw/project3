@@ -36,4 +36,14 @@ public class ProductController {
         }
     }
 
+    //删除产品
+    @PostMapping("/product/deleteProduct.do")
+    public String deleteProduct(String [] ids)throws Exception{
+        System.out.println(ids);
+        System.out.println(ids[0]);
+
+        return "";
+    }
+
+
 }

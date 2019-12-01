@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 
@@ -110,17 +110,17 @@
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.css">
 
+    <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/jquery-2.2.4.js"></script>
     <script>
-       var $form = ${"#form"};
-       var $delete = ${"#delete"};
-       var $open = ${"#open"};
-       var $close = ${"#close"};
+       var $form = $("#form");
+       var $open = $("#open");
+       var $close = $("#close");
 
        $(function () {
 
-           $delete.click(function () {
-               $form.attr("action","${pageContext.request.contextPath}/");
-               $form.submit();
+           $("#delete").click(function () {
+               $("#form").attr("action","${pageContext.request.contextPath}/product/deleteProduct.do");
+               $("#form").submit();
            });
 
            $open.click(function () {
@@ -217,7 +217,7 @@
                         </div>
                         <!--工具栏/-->
 
-                        <form id="form" action="#" method="post">
+                        <form id="form" action="${pageContext.request.contextPath}/product/deleteProduct.do" method="post">
                         <!--数据列表-->
                         <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
                             <thead>
