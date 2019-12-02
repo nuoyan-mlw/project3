@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%-- <%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %> --%>
 <aside class="main-sidebar">
 	<!-- sidebar: style can be found in sidebar.less -->
@@ -35,26 +36,38 @@
 
 
 				<ul class="treeview-menu">
-					<li id="system-setting">
-						<a
-						href="${pageContext.request.contextPath}/user/query.do"> <i
-							class="fa fa-circle-o"></i> 用户管理
-					</a>
-					</li>
+					<shiro:hasAnyRoles name="admin">
+						<li id="system-setting">
+							<a
+									href="${pageContext.request.contextPath}/user/query.do"> <i
+									class="fa fa-circle-o"></i> 用户管理
+							</a>
+						</li>
+					</shiro:hasAnyRoles>
+
+					<shiro:hasAnyRoles name="admin">
 					<li id="system-setting"><a
 						href="${pageContext.request.contextPath}/role/queryRole.do"> <i
 							class="fa fa-circle-o"></i> 角色管理
 					</a></li>
+					</shiro:hasAnyRoles>
+
+					<shiro:hasAnyRoles name="admin">
 					<li id="system-setting"><a
 						href="${pageContext.request.contextPath}/permission/queryPermission.do">
 							<i class="fa fa-circle-o"></i> 资源权限管理
 					</a></li>
+					</shiro:hasAnyRoles>
+
+					<shiro:hasAnyRoles name="admin,productManager,orderManager">
 					<li id="system-setting">
 						<a
 						href="${pageContext.request.contextPath}/log/queryLog.do/1/8"> <i
 							class="fa fa-circle-o"></i> 访问日志
 					</a>
 					</li>
+					</shiro:hasAnyRoles>
+
 				</ul>
 
 			</li>
@@ -65,14 +78,19 @@
 			</a>
 				<ul class="treeview-menu">
 
+					<shiro:hasAnyRoles name="admin,productManager">
 					<li id="system-setting"><a
 						href="${pageContext.request.contextPath}/product/queryProduct.do">
 							<i class="fa fa-circle-o"></i> 产品管理
 					</a></li>
+					</shiro:hasAnyRoles>
+
+					<shiro:hasAnyRoles name="admin,orderManager">
 					<li id="system-setting"><a
 						href="${pageContext.request.contextPath}/order/queryOrder.do"> <i
 							class="fa fa-circle-o"></i> 订单管理
 					</a></li>
+					</shiro:hasAnyRoles>
 
 				</ul></li>
 

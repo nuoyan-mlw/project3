@@ -63,7 +63,7 @@ public class LogAOP {
 
 
         @Pointcut("execution(* com.crazycode.web.controller..*.*(..))&& !execution(* com.crazycode.web.controller..*.logout*(..))" +
-                "&& !execution(* com.crazycode.web.controller..*.login*(..))")
+                "&& !execution(* com.crazycode.web.controller..*.login*(..))&& !execution(* com.crazycode.web.controller..*.save*(..))")
         public void webLog() {
         }
 

@@ -37,4 +37,4 @@ pagehelper:
 shiro:
   loginUrl: /login.jsp
   successUrl: /pages/main.jsp
-  unauthorizedUrl: /
+  unauthorizedUrl: /403.jsp
