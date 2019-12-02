@@ -27,7 +27,7 @@ public class ProductController {
     //添加产品
     @PostMapping("/product/addProduct.do")
     public String addProduct(Product product)throws Exception{
-        System.out.println(product);
+        //System.out.println(product);
         int i = productService.addProduct(product);
         if(i == 1){
             return "redirect:/product/queryProduct.do";
@@ -39,10 +39,28 @@ public class ProductController {
     //删除产品
     @PostMapping("/product/deleteProduct.do")
     public String deleteProduct(String [] ids)throws Exception{
-        System.out.println(ids);
-        System.out.println(ids[0]);
+        if(ids != null){
+            productService.deleteProduct(ids);
+        }
+        return "redirect:/product/queryProduct.do";
+    }
 
-        return "";
+    //开启产品
+    @PostMapping("/product/openProduct.do")
+    public String openProduct(String [] ids)throws Exception{
+        if(ids != null){
+            productService.openProduct(ids);
+        }
+        return "redirect:/product/queryProduct.do";
+    }
+
+    //关闭产品
+    @PostMapping("/product/closeProduct.do")
+    public String closeProduct(String [] ids)throws Exception{
+        if(ids != null){
+            productService.closeProduct(ids);
+        }
+        return "redirect:/product/queryProduct.do";
     }
 
 

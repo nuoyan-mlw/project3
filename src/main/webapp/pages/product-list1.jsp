@@ -112,24 +112,24 @@
 
     <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/jquery-2.2.4.js"></script>
     <script>
-       var $form = $("#form");
-       var $open = $("#open");
-       var $close = $("#close");
-
        $(function () {
 
+           var $form = $("#form");
+           var $open = $("#open");
+           var $close = $("#close");
+
            $("#delete").click(function () {
-               $("#form").attr("action","${pageContext.request.contextPath}/product/deleteProduct.do");
-               $("#form").submit();
+               $form.attr("action","${pageContext.request.contextPath}/product/deleteProduct.do");
+               $form.submit();
            });
 
            $open.click(function () {
-               $form.attr("action","${pageContext.request.contextPath}/");
+               $form.attr("action","${pageContext.request.contextPath}/product/openProduct.do");
                $form.submit();
            });
 
            $close.click(function () {
-               $form.attr("action","${pageContext.request.contextPath}/");
+               $form.attr("action","${pageContext.request.contextPath}/product/closeProduct.do");
                $form.submit();
            });
 

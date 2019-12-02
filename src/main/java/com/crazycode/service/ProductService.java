@@ -14,4 +14,13 @@ public interface ProductService {
 
     //添加产品
     public int addProduct(Product product)throws Exception;
+
+    //删除商品
+    public void deleteProduct(String [] ids)throws Exception;
+
+    //开启商品
+    public void openProduct(String [] ids)throws Exception;
+
+    //关闭商品
+    public void closeProduct(String [] ids)throws Exception;
 }

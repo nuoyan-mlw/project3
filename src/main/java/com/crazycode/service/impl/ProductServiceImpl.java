@@ -27,4 +27,26 @@ public class ProductServiceImpl implements ProductService {
     public int addProduct(Product product) throws Exception {
         return productMapper.addProduct(product);
     }
+
+    @Override
+    public void deleteProduct(String[] ids) throws Exception {
+        for (int i = 0;i < ids.length;i++){
+            productMapper.deleteProduct(ids[i]);
+        }
+
+    }
+
+    @Override
+    public void openProduct(String[] ids) throws Exception {
+        for (int i = 0;i < ids.length;i++){
+            productMapper.openProduct(ids[i]);
+        }
+    }
+
+    @Override
+    public void closeProduct(String[] ids) throws Exception {
+        for (int i = 0;i < ids.length;i++){
+            productMapper.closeProduct(ids[i]);
+        }
+    }
 }

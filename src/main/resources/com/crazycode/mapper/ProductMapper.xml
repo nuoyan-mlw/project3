@@ -17,4 +17,19 @@
         insert into product values (UUID(),#{productNum},#{productName},#{cityName},#{departureTime},#{productPrice},#{productDesc},#{productStatus})
     </insert>
 
+    <!--删除商品-->
+    <delete id="deleteProduct">
+        delete from product where id = #{id}
+    </delete>
+
+    <!--开启商品-->
+    <update id="openProduct">
+        update product set productStatus = '1' where id = #{id}
+    </update>
+
+    <!--关闭商品-->
+    <update id="closeProduct">
+        update product set productStatus = '0' where id = #{id}
+    </update>
+
 </mapper>

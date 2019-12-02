@@ -6,6 +6,7 @@ import com.crazycode.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
@@ -20,7 +21,10 @@ public class UserRealm extends AuthorizingRealm {
      */
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         System.out.println("执行了授权方法");
-        return null;
+        SimpleAuthorizationInfo authorizationInfo= new SimpleAuthorizationInfo();//封装授权的相关信息
+        Users users = (Users) SecurityUtils.getSubject().getPrincipal();//获得当前用户
+
+        return authorizationInfo;
     }
 
     /**
