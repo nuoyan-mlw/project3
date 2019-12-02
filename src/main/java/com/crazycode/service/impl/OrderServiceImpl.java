@@ -17,4 +17,9 @@ public class OrderServiceImpl implements OrderService {
     public List<Orders> queryAllOrder() throws Exception {
         return orderMapper.queryAllOrder();
     }
+
+    @Override
+    public Orders queryOrderById(String oId) throws Exception {
+        return orderMapper.queryOrderById(oId);
+    }
 }

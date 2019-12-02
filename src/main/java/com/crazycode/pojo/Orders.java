@@ -2,12 +2,15 @@ package com.crazycode.pojo;
 
 import lombok.Data;
 
+import java.util.Date;
+import java.util.List;
+
 @Data
 public class Orders {
 
   private String id;
   private String orderNum;
-  private java.sql.Timestamp orderTime;
+  private Date orderTime;
   private long peopleCount;
   private String orderDesc;
   private long payType;
@@ -16,4 +19,6 @@ public class Orders {
   private String memberId;
 
   private Product product;
+  private Member member;
+  private List<Traveller> travellerList;
 }

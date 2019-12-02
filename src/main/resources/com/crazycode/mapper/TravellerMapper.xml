@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间+ id 名字来确定唯一的sql语句-->
+<mapper namespace="com.crazycode.mapper.TravellerMapper">
+    <select id="queryTravellerById" resultMap="traveller_type">
+        select t.id tid,t.name,t.sex,t.phoneNum,t.credentialsType,t.credentialsNum,t.travellerType from traveller t,order_traveller ot where ot.travellerid = t.id and  ot.orderid =#{id}
+    </select>
+
+    <resultMap id="traveller_type" type="traveller">
+        <id property="id" column="tid"></id>
+        <result property="name" column="name"></result>
+        <result property="sex" column="sex"></result>
+        <result property="phoneNum" column="phoneNum"></result>
+        <result property="credentialsType" column="credentialsType"></result>
+        <result property="credentialsNum" column="credentialsNum"></result>
+        <result property="travellerType" column="travellerType"></result>
+    </resultMap>
+
+
+</mapper>

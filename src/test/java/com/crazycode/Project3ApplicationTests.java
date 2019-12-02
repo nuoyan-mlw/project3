@@ -4,10 +4,7 @@ import com.crazycode.mapper.PermissionMapper;
 import com.crazycode.mapper.RoleMapper;
 import com.crazycode.mapper.UserMapper;
 import com.crazycode.pojo.Users;
-import com.crazycode.service.LoginRegisterService;
-import com.crazycode.service.ProductService;
-import com.crazycode.service.RoleService;
-import com.crazycode.service.UserService;
+import com.crazycode.service.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,6 +26,8 @@ class Project3ApplicationTests {
     private RoleService roleService;
     @Autowired
     private ProductService productService;
+    @Autowired
+    private OrderService orderService;
 
     @Test
     void contextLoads() {
@@ -65,5 +64,10 @@ class Project3ApplicationTests {
     public void queryRole()throws Exception{
         /*System.out.println(roleService.queryRole());*/
         System.out.println(productService.queryProductById("0574b9ab9d7611e9aa6e74d02bd4fd82"));
+    }
+
+    @Test
+    public void queryOrderById()throws Exception{
+        System.out.println(orderService.queryOrderById("2"));
     }
 }
