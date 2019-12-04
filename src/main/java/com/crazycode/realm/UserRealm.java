@@ -38,7 +38,7 @@ public class UserRealm extends AuthorizingRealm {
             e.printStackTrace();
         }
 
-        System.out.println(roles);
+        //System.out.println(roles);
 
         for (Role role: roles) {
             authorizationInfo.addRole(role.getRoleName());

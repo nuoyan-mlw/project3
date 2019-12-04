@@ -11,6 +11,6 @@ public class MD5Util {
     }
 
     public static void main(String[] args) {
-        System.out.println(md5hash("123456","zhangsan"));
+        System.out.println(md5hash("123","chenhao"));
     }
 }

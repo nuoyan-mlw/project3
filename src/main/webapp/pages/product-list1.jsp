@@ -138,6 +138,10 @@
        });
 
 
+
+       function go() {
+           $("#search").submit();
+       }
     </script>
 
 </head>
@@ -212,8 +216,11 @@
                         </div>
                         <div class="box-tools pull-right">
                             <div class="has-feedback">
-                                <input type="text" class="form-control input-sm" placeholder="搜索">
-                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                <form action="${pageContext.request.contextPath}/product/searchProduct.do" method="post">
+
+                                    <input id="search" type="text" name="text" class="form-control input-sm" placeholder="搜索">
+                                </form>
+                                <span onclick="go()" class="glyphicon glyphicon-search form-control-feedback"></span>
                             </div>
                         </div>
                         <!--工具栏/-->

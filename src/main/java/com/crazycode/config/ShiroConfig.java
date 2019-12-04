@@ -72,6 +72,7 @@ public class ShiroConfig {
      */
     @Bean
     public CredentialsMatcher hashedCredentialsMatcher() throws Exception{
+        System.out.println("执行了密码匹配");
         HashedCredentialsMatcher credentialsMatcher = new HashedCredentialsMatcher();
         credentialsMatcher.setHashAlgorithmName(Md5Hash.ALGORITHM_NAME);// 设置加密算法类型
         credentialsMatcher.setHashIterations(1024);//设置加密次数

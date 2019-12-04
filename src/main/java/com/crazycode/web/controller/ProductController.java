@@ -63,5 +63,11 @@ public class ProductController {
         return "redirect:/product/queryProduct.do";
     }
 
+    //产品搜索/product/searchProduct.do
+    @PostMapping("/product/searchProduct.do")
+    public String searchProduct(String text)throws Exception{
+        System.out.println("111111111");
+        return "redirect:/product/queryProduct.do";
+    }
 
 }
