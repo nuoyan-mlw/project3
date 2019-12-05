@@ -24,6 +24,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.wltea.analyzer.lucene.IKAnalyzer;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @SpringBootTest
@@ -85,7 +87,7 @@ class Project3ApplicationTests {
 
     @Test
     public void queryOrderById()throws Exception{
-        System.out.println(orderService.queryOrderById("2"));
+        System.out.println(productService.queryProduct());
     }
 
     //创建索引库
@@ -109,7 +111,11 @@ class Project3ApplicationTests {
             Field productNumField = new StoredField("productNum",product.getProductNum());
             Field productNameField = new TextField("productName",product.getProductName(), Field.Store.YES);
             Field cityNameField = new TextField("cityName",product.getCityName(), Field.Store.YES);
-            Field departureTimeField = new StoredField("departureTime",product.getDepartureTime()+"");
+            Date date= product.getDepartureTime();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            String time =sdf.format(date);
+            System.out.println(time);
+            Field departureTimeField = new StoredField("departureTime",time);
             Field productPriceField = new TextField("productPrice",product.getProductPrice()+"", Field.Store.YES);
             Field productDescField = new TextField("productDesc",product.getProductDesc()+"", Field.Store.YES);
             Field productStatusField = new StoredField("productStatus",product.getProductStatus());

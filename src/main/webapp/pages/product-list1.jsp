@@ -216,9 +216,8 @@
                         </div>
                         <div class="box-tools pull-right">
                             <div class="has-feedback">
-                                <form action="${pageContext.request.contextPath}/product/searchProduct.do" method="post">
-
-                                    <input id="search" type="text" name="text" class="form-control input-sm" placeholder="搜索">
+                                <form id="search" action="${pageContext.request.contextPath}/product/searchProduct.do" method="post">
+                                    <input  type="text" name="text" class="form-control input-sm" placeholder="搜索">
                                 </form>
                                 <span onclick="go()" class="glyphicon glyphicon-search form-control-feedback"></span>
                             </div>

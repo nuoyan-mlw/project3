@@ -27,7 +27,7 @@ public class UserRealm extends AuthorizingRealm {
      * 对当前登录的用户进行授权
      */
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        System.out.println("执行了授权方法");
+        //System.out.println("执行了授权方法");
         SimpleAuthorizationInfo authorizationInfo= new SimpleAuthorizationInfo();//封装授权的相关信息
         Users users = (Users) SecurityUtils.getSubject().getPrincipal();//获得当前用户
         //查询用户角色和权限
