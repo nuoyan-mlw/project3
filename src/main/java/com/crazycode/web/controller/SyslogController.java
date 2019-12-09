@@ -19,11 +19,11 @@ public class SyslogController {
 
     @GetMapping("/log/queryLog.do/{pageNo}/{pageSize}")
     public ModelAndView queryLog(@PathVariable("pageNo") String pageNo,@PathVariable("pageSize") String pageSize)throws Exception{
-        ModelAndView mv = new ModelAndView("pages/syslog-list");
-        PageHelper.startPage(Integer.parseInt(pageNo),Integer.parseInt(pageSize));
-        List<Syslog> logList = logService.queryLog();
-        PageInfo pageInfo = new PageInfo(logList);
-        mv.addObject("data",pageInfo);
-        return mv;
+            ModelAndView mv = new ModelAndView("pages/syslog-list");
+            PageHelper.startPage(Integer.parseInt(pageNo),Integer.parseInt(pageSize));
+            List<Syslog> logList = logService.queryLog();
+            PageInfo pageInfo = new PageInfo(logList);
+            mv.addObject("data",pageInfo);
+            return mv;
     }
 }
